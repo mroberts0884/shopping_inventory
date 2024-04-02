@@ -3,3 +3,6 @@
 
 #ignore .db files
 *.db
+
+#ignore kivy_venv folder
+/kivy_venv/
