@@ -1,0 +1,74 @@
+#: kivy 2.3.0
+
+<shoppingInv>:
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.width, root.height
+        spacing: 30
+        padding: 50
+        
+        
+        Label:
+            size_hint_x: None
+            text: "Item:"
+            color: "white"
+            size_hint: (0.20,0.10)
+            pos_hint: {'top' : 1}
+            
+
+        TextInput:
+            id: item_input
+            hint_text: "Enter Item"
+            multiline: False
+            size_hint: (0.50, 0.10)
+            pos_hint: {'top' : 1}
+                
+        Label:
+            size_hint_x: None
+            text: "Quantity:"
+            color: "white"
+            size_hint: (0.10, 0.10)
+            pos_hint: {'top' : 1}
+        
+        TextInput:
+            id: quantity_input
+            multiline: False
+            size_hint: (0.10, 0.10)
+            pos_hint: {'top': 1}
+        
+        Button:
+            text: "Add"
+            color: 'white'
+            size_hint: (0.25, 0.10)
+            pos_hint: {'top': 1}
+            on_press: app.add()
+
+        Button:
+            text: "Generate List"
+            color: 'white'
+            size_hint: (0.50, 0.10)
+            pos_hint: {'top': 1}
+            on_press: app.generate_list()
+
+        TextInput:
+            id: "list"
+            hint_text: "Enter Item"
+            multiline: False
+            size_hint: (1, 1)
+            
+            
+
+
+        
+            
+            
+
+  
+   
+                
+                
+                
+
+
+        
+
