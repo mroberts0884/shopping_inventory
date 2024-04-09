@@ -10,6 +10,8 @@ class shoppingInv(Widget):
 
 class Shoppinginv(App):
     def build(self):
+        self.title = "Shopping Inventory App"
+        
         #Connect to Database
         conn = sqlite3.connect("inventory.db")
 
@@ -17,19 +19,23 @@ class Shoppinginv(App):
         cur = conn.cursor()
 
         #Create Table
-        cur.execute("CREATE TABLE if not exists Shopping_List(Item, Quantity)")
+        cur.execute("""CREATE TABLE IF NOT EXISTS Shopping_List(
+                    Item TEXT,
+                    Quantity INTEGER    
+        )""")
         
         #Commit changes
         conn.commit()
 
         #Close our connection
-        conn.close
+        conn.close()
 
         return shoppingInv()
 
     def add(self):
-        item = self.root.ids.item_input
-        quantity = self.root.ids.quantity_input
+        item = self.root.ids.item_input.text
+        quantity = self.root.ids.quantity_input.text
+        
         #Connect to Database
         conn = sqlite3.connect("inventory.db")
 
@@ -37,7 +43,7 @@ class Shoppinginv(App):
         cur = conn.cursor()
 
         #Add Item and Quantity
-        cur.execute("INSERT INTO Shopping_List(Item, Quantity) VALUES(?,?)", item, quantity)
+        cur.execute("INSERT INTO Shopping_List(Item, Quantity) VALUES(?,?)", (item, quantity))
 
         #clear input
         self.root.ids.item_input.text = ''
@@ -47,7 +53,7 @@ class Shoppinginv(App):
         conn.commit()
 
         #Close our connection
-        conn.close      
+        conn.close()      
 
     def generate_list(self):
              
@@ -68,10 +74,10 @@ class Shoppinginv(App):
             self.root.ids.list.text = f"{word}"
         
         #Commit changes
-        #conn.commit()
+        conn.commit()
 
         #Close our connection
-        conn.close
+        conn.close()
         
         
 
